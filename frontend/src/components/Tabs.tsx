@@ -13,7 +13,6 @@ export function TaBs() {
       name: "Select Module",
       component: (
         <div className="flex justify-center m-12">
-          {" "}
           <SelectModule />
         </div>
       ),
@@ -21,7 +20,11 @@ export function TaBs() {
     {
       value: 1,
       name: "Add Quiz",
-      component: <AddQuizForm />,
+      component: (
+        <div className="p-4">
+          <AddQuizForm />
+        </div>
+      ),
     },
   ];
   const data = [

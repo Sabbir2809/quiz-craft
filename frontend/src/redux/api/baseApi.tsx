@@ -10,7 +10,20 @@ export const baseApi = createApi({
         method: "GET",
       }),
     }),
+    publishQuiz: builder.mutation({
+      query: (data) => ({
+        url: `/quiz`,
+        method: "POST",
+        body: data,
+      }),
+    }),
+    getQuiz: builder.query({
+      query: () => ({
+        url: `/quiz`,
+        method: "GET",
+      }),
+    }),
   }),
 });
 
-export const { useGetAllModulesQuery } = baseApi;
+export const { useGetAllModulesQuery, usePublishQuizMutation, useGetQuizQuery } = baseApi;

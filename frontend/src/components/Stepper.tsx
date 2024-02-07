@@ -29,7 +29,7 @@ export function Stepper({ steps }: TStepperProps) {
         ))}
       </MTStepper>
 
-      <div className="mt-16">{steps[activeStep].component}</div>
+      <div>{steps[activeStep].component}</div>
     </div>
   );
 }

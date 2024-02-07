@@ -9,6 +9,7 @@ export function SelectModule() {
   const { title: moduleTitle } = useAppSelector((state) => state.module);
   const { data: module, isLoading } = useGetAllModulesQuery("");
   const dispatch = useAppDispatch();
+
   if (isLoading) {
     return (
       <div className="flex justify-center items-center w-full h-full">
@@ -16,6 +17,7 @@ export function SelectModule() {
       </div>
     );
   }
+
   return (
     <div>
       <div className="w-72 mx-auto h-52">
