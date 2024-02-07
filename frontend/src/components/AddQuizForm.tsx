@@ -1,6 +1,6 @@
 import { Button, Card, Input, Option, Select, Typography } from "@material-tailwind/react";
 import toast from "react-hot-toast";
-import { usePublishQuizMutation } from "../redux/api/baseApi";
+import { usePublishQuizMutation } from "../redux/features/quiz/quizApi";
 import {
   addQuiz,
   resetQuizForm,

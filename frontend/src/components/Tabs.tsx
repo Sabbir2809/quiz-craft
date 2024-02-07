@@ -1,12 +1,17 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Square3Stack3DIcon, UserCircleIcon } from "@heroicons/react/24/solid";
-import { Tab, TabPanel, Tabs, TabsBody, TabsHeader } from "@material-tailwind/react";
+import { Spinner, Tab, TabPanel, Tabs, TabsBody, TabsHeader, Typography } from "@material-tailwind/react";
 import React from "react";
+import { useGetAllModulesQuery } from "../redux/features/module/moduleApi";
 import { AddQuizForm } from "./AddQuizForm";
 import { QuizCard } from "./QuizCard";
+import { QuizModal } from "./QuizModal";
 import { SelectModule } from "./SelectModule";
 import { Stepper } from "./Stepper";
 
 export function TaBs() {
+  const { data: modules, isLoading } = useGetAllModulesQuery(undefined);
+
   const steps = [
     {
       value: 0,
@@ -32,7 +37,20 @@ export function TaBs() {
       label: "Quiz List",
       value: "quiz-list",
       icon: Square3Stack3DIcon,
-      desc: <QuizCard>Quiz List</QuizCard>,
+      desc: (
+        <>
+          {modules?.data.map((module: any, index: number) => (
+            <QuizCard>
+              <Typography placeholder={""} variant="h6" color="blue-gray" className="mb-3">
+                Module-{index + 1}: {module.title}
+              </Typography>
+              <div className="flex justify-end">
+                <QuizModal moduleId={module._id} />
+              </div>
+            </QuizCard>
+          ))}
+        </>
+      ),
     },
     {
       label: "Add Quiz",
@@ -45,6 +63,14 @@ export function TaBs() {
       ),
     },
   ];
+
+  if (isLoading)
+    return (
+      <div className="flex justify-center">
+        <Spinner />
+      </div>
+    );
+
   return (
     <Tabs value="quiz-list">
       <TabsHeader placeholder={""}>

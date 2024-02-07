@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Option, Select, Spinner } from "@material-tailwind/react";
-import { useGetAllModulesQuery } from "../redux/api/baseApi";
+import { useGetAllModulesQuery } from "../redux/features/module/moduleApi";
 import { setModule } from "../redux/features/module/moduleSlice";
 import { setActiveStepper } from "../redux/features/stepper/stepperSlice";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
